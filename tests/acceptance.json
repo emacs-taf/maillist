@@ -1,0 +1,360 @@
+{
+  "schema": 1,
+  "load_path": [
+    ".",
+    "tests",
+    "../etaf",
+    "../etaf-ui",
+    "../etaf-db",
+    "../ebox",
+    "../ecss"
+  ],
+  "support": [],
+  "cases": [
+    {
+      "name": "maillist-tests-parse-index-reads-thread-rows",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A public-inbox index becomes thread rows with date, size and nesting."
+    },
+    {
+      "name": "maillist-tests-parse-thread-keeps-messages-and-senders",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A thread document yields its subject, senders and reply nesting."
+    },
+    {
+      "name": "maillist-tests-classify-lines-names-quotes-and-patches",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Body classification marks quotes, diff hunks and prose with stable ids."
+    },
+    {
+      "name": "maillist-tests-parse-author-reads-the-from-header",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A raw message's From header becomes the list's sender, decoded and unfolded."
+    },
+    {
+      "name": "maillist-tests-day-labels-follow-the-calendar",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Timestamps read as a clock today and as yesterday before that."
+    },
+    {
+      "name": "maillist-tests-session-syncs-a-local-archive",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A session lists a local archive's threads and opens one with its messages."
+    },
+    {
+      "name": "maillist-tests-read-and-star-survive-a-restart",
+      "file": "tests/maillist-tests.el",
+      "purpose": "An opened thread stays read and a starred thread stays starred after a restart."
+    },
+    {
+      "name": "maillist-tests-unanswered-index-keeps-the-list",
+      "file": "tests/maillist-tests.el",
+      "purpose": "An archive answer without thread rows fails the sync and keeps the stored list."
+    },
+    {
+      "name": "maillist-tests-proxy-route-answers-through-the-configured-proxy",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A proxy route sends the archive request to the proxy named by maillist-proxy."
+    },
+    {
+      "name": "maillist-tests-auto-retries-a-stalled-direct-attempt",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A direct attempt that never answers retries through the proxy instead of waiting for the request timeout."
+    },
+    {
+      "name": "maillist-tests-dead-proxy-route-still-reaches-the-archive",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A proxy route whose endpoint is not running still reaches the archive directly."
+    },
+    {
+      "name": "maillist-tests-failed-routes-name-every-endpoint",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A request that reaches nothing names the proxy and the archive it could not connect to."
+    },
+    {
+      "name": "maillist-tests-http-error-answer-is-readable",
+      "file": "tests/maillist-tests.el",
+      "purpose": "An archive that answers with an HTTP error reports that status instead of url.el's error shape."
+    },
+    {
+      "name": "maillist-tests-lists-do-not-share-stored-threads",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Threads are stored per archive, so another list does not show them."
+    },
+    {
+      "name": "maillist-tests-compile-query-maps-fields-and-marks",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Reader search syntax becomes an archive query plus local mark filters."
+    },
+    {
+      "name": "maillist-tests-local-mark-filters-narrow-the-list",
+      "file": "tests/maillist-tests.el",
+      "purpose": "is:unread and is:starred filter the visible rows without a request."
+    },
+    {
+      "name": "maillist-tests-failed-search-keeps-the-open-thread",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A search the archive cannot answer reports and leaves the reader alone."
+    },
+    {
+      "name": "maillist-tests-reply-targets-the-list-or-the-author",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A reply addresses the list; a private reply addresses the last sender."
+    },
+    {
+      "name": "maillist-tests-scope-shows-starred-and-unread-rows",
+      "file": "tests/maillist-tests.el",
+      "purpose": "The starred and unread scopes filter the rows the list shows."
+    },
+    {
+      "name": "maillist-tests-long-thread-shows-newest-messages-first",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A thread starts with a window of new messages and grows on demand."
+    },
+    {
+      "name": "maillist-tests-refresh-keeps-threads-the-index-dropped",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A refresh merges the index page into the stored list, keeping older threads and their marks."
+    },
+    {
+      "name": "maillist-tests-read-mark-waits-for-the-body",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A thread whose body never arrives stays unread after it was selected."
+    },
+    {
+      "name": "maillist-tests-search-rows-stay-out-of-the-cache",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Opening a search result leaves the archive cache's stored facts unchanged."
+    },
+    {
+      "name": "maillist-tests-incompatible-cache-is-rebuilt",
+      "file": "tests/maillist-tests.el",
+      "purpose": "An unreadable cache file is moved aside and rebuilt, so persistence keeps working."
+    },
+    {
+      "name": "maillist-tests-open-mounts-and-close-releases",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Opening mounts a live client with its chrome and closing kills the buffer."
+    },
+    {
+      "name": "maillist-tests-parse-search-reads-message-rows",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A public-inbox search page reads as message rows, which the index parser does not see."
+    },
+    {
+      "name": "maillist-tests-search-fetch-reads-the-archive-answer",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A search request parses the archive's answer with the search reader."
+    },
+    {
+      "name": "maillist-tests-search-falls-back-to-cached-bodies",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A search the archive cannot answer reports from the cached bodies and names the matched text."
+    },
+    {
+      "name": "maillist-tests-unread-mark-survives-a-sync",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Marking a thread unread survives the next sync and the next start."
+    },
+    {
+      "name": "maillist-tests-mark-all-read-covers-the-shown-rows",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Marking all read covers the rows the reader sees and reports how many changed."
+    },
+    {
+      "name": "maillist-tests-older-mail-joins-the-list",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Mail older than the list comes from the archive's date search, grouped by subject and without repeats."
+    },
+    {
+      "name": "maillist-tests-store-answers-while-another-writer-holds-the-file",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A reader answers while another connection to the store is mid-write."
+    },
+    {
+      "name": "maillist-tests-store-prune-keeps-the-newest-rows-and-the-marks",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Retention keeps the newest rows and cached bodies and never drops the reader's marks."
+    },
+    {
+      "name": "maillist-tests-store-settings-round-trip",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A stored setting reads back and a second write replaces it."
+    },
+    {
+      "name": "maillist-tests-open-remembers-the-archive",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A client started without a list opens the archive it opened last."
+    },
+    {
+      "name": "maillist-tests-cached-body-search-names-the-match",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Cached bodies answer a search with the thread and the text that matched."
+    },
+    {
+      "name": "maillist-tests-message-links-lists-addresses-in-order",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A message body yields the addresses a reader can open, trimmed and without repeats."
+    },
+    {
+      "name": "maillist-tests-displayed-links-follow-the-message",
+      "file": "tests/maillist-tests.el",
+      "purpose": "An open thread carries the addresses its messages mention."
+    },
+    {
+      "name": "maillist-tests-open-client-syncs-on-a-schedule",
+      "file": "tests/maillist-tests.el",
+      "purpose": "An open client syncs on a schedule and stops asking the archive once it is closed."
+    },
+    {
+      "name": "maillist-tests-recall-query-walks-the-history",
+      "file": "tests/maillist-tests.el",
+      "purpose": "The search history walk returns the queries the client ran and ends at the archive's list."
+    },
+    {
+      "name": "maillist-tests-thread-url-is-the-archive-page",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A thread's shareable address is the archive's own page for it."
+    },
+    {
+      "name": "maillist-tests-first-sync-marks-nothing-new",
+      "file": "tests/maillist-tests.el",
+      "purpose": "The sync that establishes the list reports no new thread, and a thread a later page adds is marked new."
+    },
+    {
+      "name": "maillist-tests-file-archive-does-not-use-the-proxy",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A file: archive is read directly even when the configured route is the proxy."
+    },
+    {
+      "name": "maillist-tests-torn-store-is-rebuilt",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A store file a crash left unreadable is set aside and rebuilt instead of leaving the client without persistence."
+    },
+    {
+      "name": "maillist-tests-reply-all-copies-the-last-author",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A reply-all keeps the list as recipient and copies the last message's author; the plain reply has no Cc."
+    },
+    {
+      "name": "maillist-tests-next-unread-visits-each-unread-thread-once",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Next-unread walks the unread rows after the selection once and stops at the end."
+    },
+    {
+      "name": "maillist-tests-select-edge-reaches-both-ends",
+      "file": "tests/maillist-tests.el",
+      "purpose": "The list jumps to its first and last row and opens them."
+    },
+    {
+      "name": "maillist-tests-palette-is-shared-while-the-theme-holds",
+      "file": "tests/maillist-tests.el",
+      "purpose": "The palette is reused while the theme holds and follows a face it changes."
+    },
+    {
+      "name": "maillist-tests-a-store-queries-its-own-file",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Search and marks read the SQLite file the store was opened on, not the default one."
+    },
+    {
+      "name": "maillist-tests-http-utf8-response-is-decoded",
+      "file": "tests/maillist-tests.el",
+      "purpose": "HTTP responses carrying UTF-8 bytes decode cleanly without mojibake."
+    },
+    {
+      "name": "maillist-tests-encoded-message-ids-decode-and-round-trip",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Percent-encoded Message-IDs decode canonically and encode once in URLs and mbox links."
+    },
+    {
+      "name": "maillist-tests-offline-cached-thread-survives-refresh-failure",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Opening a cached thread offline keeps its cached messages visible when background refresh fails."
+    },
+    {
+      "name": "maillist-tests-debbugs-reply-targets-bug-address",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Replying in a Debbugs list addresses <bug>@debbugs.gnu.org and excludes own address from Cc."
+    },
+    {
+      "name": "maillist-tests-focused-message-reply-and-ancestor-references",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Focusing an earlier message targets it on reply with its RFC 5322 ancestor References chain."
+    },
+    {
+      "name": "maillist-tests-new-replies-reopen-read-thread-and-mark-new",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A previously read thread whose date or count advances on sync becomes unread and new again."
+    },
+    {
+      "name": "maillist-tests-search-isolation-and-instant-restore",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Clearing a search restores the archive list offline immediately without losing cached threads."
+    },
+    {
+      "name": "maillist-tests-structured-local-search-handles-fields-and-wildcards",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Offline local search evaluates structured field queries, is:read and escapes SQLite LIKE wildcards."
+    },
+    {
+      "name": "maillist-tests-cross-posted-threads-and-shared-messages-stay-isolated",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Cross-posted thread ids across lists and shared messages across threads stay isolated with :parent preserved."
+    },
+    {
+      "name": "maillist-tests-v3-store-migrates-in-place-preserving-marks",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A valid v0.3.0 store migrates in place to composite keys without losing threads or marks."
+    },
+    {
+      "name": "maillist-tests-prune-protects-starred-and-other-lists",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Pruning a list protects starred threads and leaves other lists' cached bodies untouched."
+    },
+    {
+      "name": "maillist-tests-classify-lines-and-links-handle-diffs-quotes-signatures",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Line classification handles diff headers, nested quotes and signatures; link extraction skips quotes and keeps balanced parens."
+    },
+    {
+      "name": "maillist-tests-prev-unread-folding-quotes-and-custom-sources",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Previous-unread, collapse-all, quote toggle, inherit mail transport and custom source persistence work."
+    },
+    {
+      "name": "maillist-tests-native-index-cursor-loads-older-threads",
+      "file": "tests/maillist-tests.el",
+      "purpose": "When the archive index provides a ?t= next cursor, load-older pages thread rows natively."
+    },
+    {
+      "name": "maillist-tests-mounted-regions-and-help",
+      "file": "tests/maillist-tests.el",
+      "purpose": "The mounted client registers ETAF search, threads and reader regions plus in-buffer help notes."
+    },
+    {
+      "name": "maillist-tests-nntp-sync-thread-older-and-incremental-update",
+      "file": "tests/maillist-tests.el",
+      "purpose": "NNTP sync reads XOVER authors, pipelines MIME thread articles, updates incrementally and pages older mail."
+    },
+    {
+      "name": "maillist-tests-nntp-falls-back-to-http-when-unreachable",
+      "file": "tests/maillist-tests.el",
+      "purpose": "When an archive's NNTP endpoint is unreachable, sync and thread reading fall back transparently to HTTP."
+    },
+    {
+      "name": "maillist-tests-unchanged-cached-thread-opens-without-network",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Reopening an unchanged cached thread in a fresh session serves SQLite directly with zero network calls."
+    },
+    {
+      "name": "maillist-tests-dead-proxy-falls-back-once-and-learns-direct-route",
+      "file": "tests/maillist-tests.el",
+      "purpose": "A dead proxy falls back once without duplicating HTTP requests and subsequent requests lead with direct."
+    },
+    {
+      "name": "maillist-tests-body-prefetch-warms-unread-threads-in-background",
+      "file": "tests/maillist-tests.el",
+      "purpose": "Idle background body prefetch caches top uncached unread threads into SQLite for instant opening."
+    }
+  ]
+}
